@@ -286,17 +286,13 @@
   running the tests, similar to the example below:
 
 <p align="center">
-<img src="https://i.postimg.cc/T2z3XXxQ/Captura-de-Tela-2022-05-27-a-s-18-49-37.png"
-  alt="Size Limit comment in pull request about bundle size changes"
-  width="486" height="139">
+<img src="assets/images/cucumber-report-info.png">
 </p>
 
 * the results will have a display as the image below:
 
 <p align="center">
-<img src="https://i.postimg.cc/tRk3N4JP/Captura-de-Tela-2023-01-09-a-s-09-12-43.png"
-  alt="Size Limit comment in pull request about bundle size changes"
-  width="686" height="289">
+<img src="assets/images/cucumber-report.png">
 </p>
 
 [Postman Collection]: https://drive.google.com/drive/folders/187wQkcLSKkIvQKHo5Jywe4cmQayKR9Bf?usp=sharing
@@ -307,5 +303,3 @@
 
 
 * https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
-
-
