@@ -38,6 +38,17 @@
 
 * Access the series of four articles published on Medium and see details about the implementation of this project.
 
+
+* **PART I** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-i-0847fb2833c2
+
+
+* **PART II** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-ii-839489387308
+
+
+* **PART III** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-iii-b1269635ed0c
+
+
+* **PART IV** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-iv-a3cb82d5421a
 *******
 
 ## How FlightBooking works?
