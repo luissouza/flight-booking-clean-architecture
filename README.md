@@ -12,7 +12,7 @@
 
 ## Tools and plugins used in this project
 
-* Java JDK 20.0.1
+* Java JDK 23.0.1
 * Spring Boot 3.3.5
 * Maven 3.87
 * Cucumber 7.13.0
@@ -22,8 +22,10 @@
 * Elastic Search 8.15.3
 * Docker
 * OpenApi 2.1.0
+* Resilience4j 1.7.1
+* Actuator 3.3.5
 * Slfj 1.7.36
-* Developed with: IntelliJ IDEA 2023.1.1 (Ultimate Edition)
+* Developed with: IntelliJ IDEA 2025.1.2 (Community Edition)
 
 *******
 
@@ -58,8 +60,8 @@
   carrying out the search, the API will calculate the average price of all flights and the average
   price of baggages. All the flights data will be provided by apis:
 
-- **Get Flights API:** https://run.mocky.io/v3/f1c93e7c-f38a-439e-8a2a-8a5341447084
-- **Get Airport Locations API:** https://run.mocky.io/v3/3796db51-102d-4ea3-8433-c8a78c348c19
+- **Get Flights API:** https://run.mocky.io/v3/75ff38da-58e1-4f00-8135-008c31e4415b
+- **Get Airport Locations API:** https://run.mocky.io/v3/efb63a70-f1c8-4c01-996b-de8c179f3b5c
 
 * Internally, the logic is executed after getting the flights. The first step is to group the
   flights by destination, after that go through all the flights and calculate the average price of
@@ -177,6 +179,14 @@
 
 *******
 
+## Circuit Breaker
+
+* This application uses Circuit Breaker mechanism system, that prevents the application from repeatedly trying to execute the operation that is likely to fail the application, example:
+
+<img src="assets/images/circuit-breaker.png">
+
+*******
+
 ## Running this project
 
 1. Generate the project .jar file running the command:
@@ -250,6 +260,75 @@
                }
         }      
      ```
+
+4. Consume the api: /api/v1/flight/records to show all flight records in history
+   Example: GET http://localhost:8085/api/v1/flight/records?page=1&rpp=1
+
+
+5. Consume the api: /api/v1/flight/records to delete all flight records in history
+   Example: DELETE http://localhost:8085/api/v1/flight/records
+
+6. Consume the api: /api/v1/flight/records to delete flight records in history by id
+   Example: DELETE http://localhost:8085/api/v1/flight/records/ID_HERE
+
+*******
+
+## Actuator
+
+1. To check the system health with Actuator access the url above:
+
+      http://localhost:8085/actuator/health
+
+      ```
+
+     The api will generate a actuator health response like this above:
+     ```sh
+         {
+          "status": "UP",
+          "components": {
+              "db": {
+                  "status": "UP",
+                  "details": {
+                      "database": "PostgreSQL",
+                      "validationQuery": "isValid()"
+                  }
+              },
+              "diskSpace": {
+                  "status": "UP",
+                  "details": {
+                      "total": 1000240963584,
+                      "free": 159781388288,
+                      "threshold": 10485760,
+                      "path": "/Users/my-user/workspace/flight-booking-clean-architecture/.",
+                      "exists": true
+                  }
+              },
+              "elasticsearch": {
+                  "status": "UP",
+                  "details": {
+                      "cluster_name": "docker-cluster",
+                      "status": "yellow",
+                      "timed_out": false,
+                      "number_of_nodes": 1,
+                      "number_of_data_nodes": 1,
+                      "active_primary_shards": 1,
+                      "active_shards": 1,
+                      "relocating_shards": 0,
+                      "initializing_shards": 0,
+                      "unassigned_shards": 1,
+                      "delayed_unassigned_shards": 0,
+                      "number_of_pending_tasks": 0,
+                      "number_of_in_flight_fetch": 0,
+                      "task_max_waiting_in_queue_millis": 0,
+                      "active_shards_percent_as_number": 50.0
+                  }
+              },
+              "ping": {
+                  "status": "UP"
+              }
+          }
+   }     
+    ```
 
 4. Consume the api: /api/v1/flight/records to show all flight records in history
    Example: GET http://localhost:8085/api/v1/flight/records?page=1&rpp=1

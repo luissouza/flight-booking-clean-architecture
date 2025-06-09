@@ -32,12 +32,12 @@ api:
       headers: apikey=API_KEY_HERE
       endpoints:
         filter:
-          path: /v3/c66de63e-866e-4d63-a6eb-c0c649a59518
+          path: /v3/75ff38da-58e1-4f00-8135-008c31e4415b
           method: GET
           timeout: 20
           v: 3
         locations:
-          path: /v3/3796db51-102d-4ea3-8433-c8a78c348c19
+          path: /v3/efb63a70-f1c8-4c01-996b-de8c179f3b5c
           method: GET
           timeout: 20
 springdoc:
@@ -49,5 +49,42 @@ database:
   default: elasticsearch
 elasticsearch:
   url: localhost:9200
+resilience4j:
+  circuitbreaker:
+    instances:
+      getFlights:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+      getLocation:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+  retry:
+    instances:
+      getFlights:
+        maxAttempts: 3
+        waitDuration: 2s
+      getLocation:
+        maxAttempts: 3
+        waitDuration: 2s
+  timelimiter:
+    instances:
+      getFlights:
+        timeoutDuration: 4s
+      getLocation:
+        timeoutDuration: 4s
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
 
 
