@@ -24,6 +24,8 @@
 * OpenApi 2.1.0
 * Resilience4j 1.7.1
 * Actuator 3.3.5
+* Prometheus 2.44.0
+* Graphana 9.5.2
 * Slfj 1.7.36
 * Developed with: IntelliJ IDEA 2025.1.2 (Community Edition)
 
@@ -275,7 +277,7 @@
 
 ## Actuator
 
-1. To check the system health with Actuator access the url above:
+1. To check the system health with Actuator access the url below:
 
       http://localhost:8085/actuator/health
 
@@ -330,16 +332,28 @@
    }     
     ```
 
-4. Consume the api: /api/v1/flight/records to show all flight records in history
-   Example: GET http://localhost:8085/api/v1/flight/records?page=1&rpp=1
+## Prometheus
+
+1. To check the metrics collected by Prometheus, go to:
+http://localhost:9090
 
 
-5. Consume the api: /api/v1/flight/records to delete all flight records in history
-   Example: DELETE http://localhost:8085/api/v1/flight/records
+2. You will see something similar to the image below:
 
-6. Consume the api: /api/v1/flight/records to delete flight records in history by id
-   Example: DELETE http://localhost:8085/api/v1/flight/records/ID_HERE
+<img src="assets/images/prometheus.png">
 
+## Graphana
+
+1. To check the data collected in interactive panels, access Graphana at the following address:
+   http://localhost:3000
+2. The default user/password for graphana are: admin/admin
+
+
+2. You will see something similar to the image below:
+
+<img src="assets/images/graphana.png">
+
+     
 *******
 
 ## Information that can help you
