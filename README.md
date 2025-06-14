@@ -1,16 +1,61 @@
 <h1 align="center">
   <br>
-   <img width="1000" src="assets/images/airplane.png" />
+  <img width="1000" src="assets/images/airplane.png" alt="Flight Booking Project Banner"/>
   <br>
 </h1>
 
 <p align="center">
-  This repository contains an example of a rest project developed in Java with SpringBoot and with the integration of other tools. This project addresses good practices, the implementation of layered architecture, the adoption of good practices for exception handling, the adoption of solid principles, and others. the purpose of this project is to apply good practices, implement good structures, test new java updates and other tools.
+  <strong>Flight Booking API</strong> — A fully functional Spring Boot application following Clean Architecture principles, showcasing resilience, observability, and modern microservices practices.
 </p>
 
-***
+---
 
-## Tools and plugins used in this project
+## 📚 Table of Contents
+
+- [🔍 About the Project](#about-the-project)
+  - [🔧 Tools & Plugins](#tools--plugins)
+  - [📑 Documentation](#swagger-documentation)
+  - [📊 Case Study](#case-study)
+  - [🚀 How FlightBooking Works](#how-flightbooking-works)
+  - [⚙️ Running the Project](#running-the-project)
+  
+
+- [🏛 Architecture](#architecture)
+  - [🧱 Clean Architecture Principles](#clean-architecture-principles)
+  - [🗂 Project Structure](#project-structure)
+  - [📌 Key Terminologies](#key-terminologies)
+  
+
+- [🧠 Patterns & Practices](#patterns--practices)
+  - [🗃 Caching](#caching)
+  - [🛡 Circuit Breaker](#circuit-breaker)
+  
+
+- [📈 Observability](#observability)
+  - [🔍 Actuator](#actuator)
+  - [📡 Prometheus](#prometheus)
+  - [📊 Grafana](#grafana)
+  
+
+- [🛠 Error Handling](#error-handling)
+
+
+- [🧪 Testing](#testing)
+  - [✅ Integrated Tests - Cucumber](#integrated-tests---cucumber)
+
+
+- [ℹ️ Helpful Resources](#helpful-resources)
+- [🔗 Useful Links](#useful-links)
+
+---
+
+## 🔍 About the Project
+
+This is a Spring Boot application simulating a real-world flight booking system. It demonstrates the use of Clean Architecture, caching, resilience patterns, observability, API documentation, and integration testing.
+
+---
+
+### 🔧 Tools & Plugins
 
 * Java JDK 23.0.1
 * Spring Boot 3.3.5
@@ -28,371 +73,180 @@
 * Graphana 9.5.2
 * Slfj 1.7.36
 * Developed with: IntelliJ IDEA 2025.1.2 (Community Edition)
+---
 
-*******
+### 📑 Documentation
 
-## Swagger Documentation
+- [Swagger](http://localhost:8085/swagger-ui/index.html)
+- [Postman Collection](https://drive.google.com/drive/folders/187wQkcLSKkIvQKHo5Jywe4cmQayKR9Bf?usp=sharing)
 
-* Check the Swagger documentation on browser: http://localhost:8085/swagger-ui/index.html
-* If you need, you can get a [Postman Collection] to help the execution of the tests.
+---
 
-*******
+### 📊 Case Study
 
-## Case study
+Access the series of four articles published on Medium and see details about the implementation of this project:
 
-* Access the series of four articles published on Medium and see details about the implementation of this project.
+- [Part I](https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-i-0847fb2833c2)
+- [Part II](https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-ii-839489387308)
+- [Part III](https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-iii-b1269635ed0c)
+- [Part IV](https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-iv-a3cb82d5421a)
 
+---
 
-* **PART I** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-i-0847fb2833c2
+### 🚀 How FlightBooking Works
 
+The system:
+- Analyzes flights by destination, date, airline, and currency
+- Calculates average flight prices and baggage costs
+- Stores results in a historical database
 
-* **PART II** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-ii-839489387308
+**External APIs used:**
+- Flights: https://run.mocky.io/v3/75ff38da-58e1-4f00-8135-008c31e4415b  
+- Airport Locations: https://run.mocky.io/v3/efb63a70-f1c8-4c01-996b-de8c179f3b5c  
 
+---
 
-* **PART III** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-iii-b1269635ed0c
+### ⚙️ Running the Project
 
+```bash
+# Step 1: Build the project
+mvn clean install -DskipTests=true
 
-* **PART IV** - https://medium.com/@souzaluis/applying-clean-architecture-in-java-with-spring-boot-framework-part-iv-a3cb82d5421a
-*******
-
-## How FlightBooking works?
-
-* FlightBooking will analyze all searched flights by period, destination, currency and airports.
-  After
-  carrying out the search, the API will calculate the average price of all flights and the average
-  price of baggages. All the flights data will be provided by apis:
-
-- **Get Flights API:** https://run.mocky.io/v3/75ff38da-58e1-4f00-8135-008c31e4415b
-- **Get Airport Locations API:** https://run.mocky.io/v3/efb63a70-f1c8-4c01-996b-de8c179f3b5c
-
-* Internally, the logic is executed after getting the flights. The first step is to group the
-  flights by destination, after that go through all the flights and calculate the average price of
-  all the flights, and finally go through all the baggage costs (baggage one and baggage two) and
-  calculate the average price of each one.
-  After executing all the logic, a record will be stored in the database history
-
-*******
-
-## Clean Architecture:
-
-<p align="center">
-<img src="assets/images/clean-architecture.jpg">
-</p>
-
-## Clean Architecture Flight Booking Design
-
-<p align="center">
-<img  src="assets/images/architecture-02.png">
-</p>
-
-### Entities:
-
-* In this package, the objects represent the core business logic and rules of the application. It contains the most abstract and high-level elements, and should be completely independent of any external systems or frameworks like databases, user interfaces, or web services. The key principle of the entity layer is to encapsulate the most fundamental business logic and data in a way that is highly stable and reusable.
-
-### Application:
-
-* In Clean Architecture, the application layer is responsible for the business logic and application-specific rules. It acts as a bridge between the user adapter and the entity layer, coordinating operations and managing the flow of data.
-
-
-* This layer typically contains use cases, which define the application's actions and handle user input, ensuring that the rules of the domain are applied correctly. It also communicates with the infrastructure layer for data access and external services, but it remains independent of any specific frameworks or UI technologies. This separation promotes maintainability and testability.
-
-
-### Adapter:
-
-* Interface adapters layer  in Clean Architecture act as a bridge between the application layer and the presentation layer. They are responsible for:
-
-
-  - Converting data between different formats.
-  - Handling user input.
-  - Managing the user interface.
-
-* Essentially, they ensure that the application can effectively communicate with the user and present information in a way that is understandable and usable.
-
-### Project Structure:
-
-<p align="center">
-<img width="450" height="450" src="assets/images/project-structure.png">
-</p>
-
-*******
-
-## Few Important Terminologies
-
-* There are a few terminologies and concepts you should familiarize yourself, before going to the
-  next section.
-
-### Dto
-
-* DTO (Data Transfer Object): A DTO is primarily used to transfer data between different layers of an application or across network boundaries. Its purpose is to carry data without including any business logic or methods beyond simple getters and setters. DTOs are lightweight, containing only the data necessary for the transfer.
-
-### Model
-
-* The model represents core business entities and often includes business logic, validations, and relationships between different data entities. It’s designed to encapsulate and enforce business rules and is closely tied to the application’s data layer, often aligning with database schemas
-
-### Mapper
-
-* Mappers are used to converting the form of data when transferred between layers. There are two
-  types of Mappers:
-* Model Mapper: This will map any data to the Model.
-* DTO Mapper: This will map any data to DTOs.
-
-*******
-
-
-*******
-
-## Error Handling
-
-### The Importance of Api Exception Handling
-
-* It is important to control exception handling so we can properly map exceptions to the ApiError
-  object and inform API clients appropriately. Additionally, we would need to create more handler
-  methods (the ones with @ExceptionHandler) for thrown exceptions within the application code.
-
-<p align="center">
-<img src="assets/images/handling.png">
-
-
-### The Importance of Api Exception Handling
-
-* It is important to control exception handling so we can properly map exceptions to the ApiError
-  object and inform API clients appropriately. Additionally, we would need to create more handler
-  methods (the ones with @ExceptionHandler) for thrown exceptions within the application code.
-
-
-### Exception response example:
-
-```sh
-      {
-        "timestamp": "2023-01-15T10:37:14.301677",
-        "httpCode": 500,
-        "message": "Internal Server Error",
-        "detail": "The flight codes is invalid. Please insert two airport codes separated by commas, example: (OPO,LIS) or (LIS,OPO) to fetch data from PORTO and LISBON flights. Consult the link: https://airportcodes.aero/iata/ and see if the codes are valid.."
-      }
+# Step 2: Run the project with Docker
+docker compose up --build
 ```
 
-*******
+**Main endpoint example:**
+```
+GET /api/v1/flights/avg?flyTo=LIS,OPO&currency=GBP&dateFrom=2024-12-01&dateTo=2024-12-02&airLines=TP,FR&page=1&rpp=11
+```
 
-## Caching
+> Also includes endpoints for reading and deleting historical flight records.
 
-* This application uses Spring's native caching system, through spring-boot-starter-cache, the use of the annotation @Cacheable can be seen in the method below:
+---
 
-<img src="assets/images/caching.png">
+## 🏛 Architecture
 
-*******
+### 🧱 Clean Architecture Principles
 
-## Circuit Breaker
+This project follows Uncle Bob's Clean Architecture:
+- **Entities** (core business logic)
+- **Use Cases** (application rules)
+- **Interface Adapters** (API/controller layer)
+- **Frameworks/Drivers** (external services like DB, cache, etc.)
 
-* This application uses Circuit Breaker mechanism system, that prevents the application from repeatedly trying to execute the operation that is likely to fail the application, example:
+> <img src="assets/images/clean-architecture.jpg" width="600"/>
 
-<img src="assets/images/circuit-breaker.png">
+---
 
-*******
+### 🗂 Project Structure
 
-## Running this project
+> <img src="assets/images/project-structure.png" width="400"/>
 
-1. Generate the project .jar file running the command:
+---
 
-    ```sh
-      mvn clean install -DskipTests=true
-    ```
+### 📌 Key Terminologies
 
-2. Enter in the root of the project and run the project image with the command above:
+- **DTO**: Lightweight objects used for data transfer  
+- **Model**: Rich domain objects with validation and logic  
+- **Mapper**: Convert between models and DTOs
 
-   ```sh
-     docker compose up --build
-    ```
+---
 
-3. Consume the api: /api/v1/flights/avg, informing the parameters below:
+## 🧠 Patterns & Practices
 
-   Example: http://localhost:8085/api/v1/flights/avg?flyTo=LIS,OPO&currencyÍ=GBP&dateFrom=2024-12-01&dateTo=2024-12-02&airLines=TP,FR&page=1&rpp=11
-   #### Parameters:
-   ```sh
-      flyTo = Inform the desired destination of the flight, it is possible to enter only one destination or more than one separated by a comma, 
-      Example: OPO (only Porto), LIS (only Lisbon), OPO,LIS (Porto and Lisbon)
-      
-      currency = The currency which the cost of the flight will be calculated.
-      Example: EUR (Euro), GBP (British Pounds Sterling)
-   
-      airLines = Airlines to be filtered
-      Example: TP (TAP), FR (Ryanair)
-      
-      dateFrom = Flight departure date
-      Example: 2024-12-01
-   
-      dateTo = Flight arrival date
-      Example: 2024-12-02
-   
-      
-    ```
+### 🗃 Caching
 
-   The api will generate a average response like this:
-   ```sh
-       {
-               "meta": {
-                   "page": 1,
-                   "recordsPerPage": 11,
-                   "totalPages": 1,
-                   "version": "0.0.1",
-                   "duration": 15897
-               },
-               "data": {
-                   "averageFlights": {
-                       "LIS": {
-                           "cityName": "Lisbon",
-                           "currency": "GBP",
-                           "priceAverage": 32.0,
-                           "bagsPrice": {
-                               "bagOneAveragePrice": 50.29,
-                               "bagTwoAveragePrice": 143.08
-                           }
-                       },
-                       "OPO": {
-                           "cityName": "Porto",
-                           "currency": "GBP",
-                           "priceAverage": 51.54,
-                           "bagsPrice": {
-                               "bagOneAveragePrice": 52.48,
-                               "bagTwoAveragePrice": 138.11
-                           }
-                       }
-                   },
-                   "dateFrom": "01/12/2024",
-                   "dateTo": "02/12/2024"
-               }
-        }      
-     ```
+Implements `@Cacheable` to reduce DB load and improve performance.
 
-4. Consume the api: /api/v1/flight/records to show all flight records in history
-   Example: GET http://localhost:8085/api/v1/flight/records?page=1&rpp=1
+> <img src="assets/images/caching.png" width="500"/>
 
+---
 
-5. Consume the api: /api/v1/flight/records to delete all flight records in history
-   Example: DELETE http://localhost:8085/api/v1/flight/records
+### 🛡 Circuit Breaker
 
-6. Consume the api: /api/v1/flight/records to delete flight records in history by id
-   Example: DELETE http://localhost:8085/api/v1/flight/records/ID_HERE
+Uses Resilience4j to prevent repeated failures when external services are down.
 
-*******
+> <img src="assets/images/circuit-breaker.png" width="500"/>
 
-## Actuator
+---
 
-1. To check the system health with Actuator access the url below:
+## 📈 Observability
 
-      http://localhost:8085/actuator/health
+### 🔍 Actuator
 
-      ```
+Health Check Endpoint:  
+[http://localhost:8085/actuator/health](http://localhost:8085/actuator/health)
 
-     The api will generate a actuator health response like this above:
-     ```sh
-         {
-          "status": "UP",
-          "components": {
-              "db": {
-                  "status": "UP",
-                  "details": {
-                      "database": "PostgreSQL",
-                      "validationQuery": "isValid()"
-                  }
-              },
-              "diskSpace": {
-                  "status": "UP",
-                  "details": {
-                      "total": 1000240963584,
-                      "free": 159781388288,
-                      "threshold": 10485760,
-                      "path": "/Users/my-user/workspace/flight-booking-clean-architecture/.",
-                      "exists": true
-                  }
-              },
-              "elasticsearch": {
-                  "status": "UP",
-                  "details": {
-                      "cluster_name": "docker-cluster",
-                      "status": "yellow",
-                      "timed_out": false,
-                      "number_of_nodes": 1,
-                      "number_of_data_nodes": 1,
-                      "active_primary_shards": 1,
-                      "active_shards": 1,
-                      "relocating_shards": 0,
-                      "initializing_shards": 0,
-                      "unassigned_shards": 1,
-                      "delayed_unassigned_shards": 0,
-                      "number_of_pending_tasks": 0,
-                      "number_of_in_flight_fetch": 0,
-                      "task_max_waiting_in_queue_millis": 0,
-                      "active_shards_percent_as_number": 50.0
-                  }
-              },
-              "ping": {
-                  "status": "UP"
-              }
-          }
-   }     
-    ```
+```json
+{
+  "status": "UP",
+  "components": {
+    "db": { "status": "UP" },
+    "diskSpace": { "status": "UP" },
+    "elasticsearch": { "status": "UP" }
+  }
+}
+```
 
-## Prometheus
+---
 
-1. To check the metrics collected by Prometheus, go to:
-http://localhost:9090
+### 📡 Prometheus
 
+- Access Prometheus at: [http://localhost:9090](http://localhost:9090)  
+> <img src="assets/images/prometheus.png" width="600"/>
 
-2. You will see something similar to the image below:
+---
 
-<img src="assets/images/prometheus.png">
+### 📊 Grafana
 
-## Graphana
+- Access Grafana at: [http://localhost:3000](http://localhost:3000)  
+- Default user/password: `admin/admin`  
+> <img src="assets/images/graphana.png" width="600"/>
 
-1. To check the data collected in interactive panels, access Graphana at the following address:
-   http://localhost:3000
-2. The default user/password for graphana are: admin/admin
+---
 
+## 🛠 Error Handling
 
-2. You will see something similar to the image below:
+Standardized error format ensures consistency across APIs:
 
-<img src="assets/images/graphana.png">
+```json
+{
+  "timestamp": "2023-01-15T10:37:14",
+  "httpCode": 500,
+  "message": "Internal Server Error",
+  "detail": "The flight codes are invalid. Use airport codes like: OPO,LIS."
+}
+```
 
-     
-*******
+> <img src="assets/images/handling.png" width="600"/>
 
-## Information that can help you
+---
 
-- **Airlines API:** https://api.skypicker.com/airlines
-- **Airport code:** https://airportcodes.aero/iata/
+## 🧪 Testing
 
-| IATA-Code | ICAO-Code | Prefix-Code | Airline          | Country  
-|-----------|-----------|-------------|------------------|----------|
-| TP        | TAP       | 047         | TAP Air Portugal | Portugal |
-| FR        | RYR       | --          | Ryanair          | Ireland  |
+- Integration testing with **Cucumber + JUnit 5**
+- PostgreSQL container required before running tests
 
-*******
+### ✅ Integrated Tests - Cucumber
 
-## Test results
+> <img src="assets/images/cucumber-report.png" width="600"/>
 
-* The tests have not yet been configured to work without the launch context, so to run the unit and
-  automated tests, start the postgres container first and then run the tests.
+---
 
-### Integrated tests - Cucumber
+## ℹ️ Helpful Resources
 
-* the result of the automated tests can be accessed visually through the link generated after
-  running the tests, similar to the example below:
+- **Airlines API**: https://api.skypicker.com/airlines  
+- **Airport Codes**: https://airportcodes.aero/iata/
 
-<p align="center">
-<img src="assets/images/cucumber-report-info.png">
-</p>
+| IATA-Code | Airline          | Country   |
+|-----------|------------------|-----------|
+| TP        | TAP Air Portugal | Portugal  |
+| FR        | Ryanair          | Ireland   |
 
-* the results will have a display as the image below:
+---
 
-<p align="center">
-<img src="assets/images/cucumber-report.png">
-</p>
+## 🔗 Useful Links
 
-[Postman Collection]: https://drive.google.com/drive/folders/187wQkcLSKkIvQKHo5Jywe4cmQayKR9Bf?usp=sharing
-
-### Useful Links 
-
-* https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example
-
-
-* https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+- [Clean Architecture by Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [Red Hat Clean Architecture Example](https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example)

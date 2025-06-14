@@ -1,5 +1,6 @@
 package org.pt.flightbooking.adapters.controller;
 
+import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.websocket.server.PathParam;
@@ -21,6 +22,7 @@ public class FlightsController extends BaseController {
 
     @Tag(name = "FlightsController")
     @Operation(summary = "Get flights average")
+    @Timed(value = "flights.avg", description = "Time to find flights")
     @RequestMapping(value = "flights/avg", method = RequestMethod.GET, headers="Accept=application/json")
     public ResponseEntity<?> filterFlights(@PathParam("flyFrom") final String flyFrom,
                                            @PathParam("flyTo") final String flyTo,

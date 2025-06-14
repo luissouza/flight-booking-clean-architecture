@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <!-- PROPRIEDADE: pasta de logs relativa à raiz da aplicação -->
+    <property name="LOG_HOME" value="logs"/>
+
+    <!-- Appender Console -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%X{correlationId}] – %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender de arquivo, rotacionando diariamente e guardando 30 dias -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- arquivo atual -->
+        <file>${LOG_HOME}/flight-booking.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- um arquivo novo por dia -->
+            <fileNamePattern>${LOG_HOME}/flight-booking-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- manter apenas os últimos 30 dias -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <!-- mesmo padrão de log com correlationId -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%X{correlationId}] – %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Nível padrão de logs: console + arquivo -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- Exemplo de logger específico em DEBUG -->
+    <logger name="org.pt.flightbooking.adapters.presentation" level="DEBUG"/>
+</configuration>

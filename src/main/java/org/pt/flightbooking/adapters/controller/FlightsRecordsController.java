@@ -1,5 +1,6 @@
 package org.pt.flightbooking.adapters.controller;
 
+import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.pt.flightbooking.application.usecases.FlightsLogsUseCase;
@@ -19,6 +20,7 @@ public class FlightsRecordsController extends BaseController {
 
     @Tag(name = "FlightsRecordsController")
     @Operation(summary = "Get all flight records")
+    @Timed(value = "flights.records", description = "Time to find flights records")
     @RequestMapping(value = "flight/records", method = RequestMethod.GET, headers="Accept=application/json")
     public ResponseEntity<?> filterFlightsLogs(@RequestParam(name = "page", defaultValue = "0") int page,
                                                                       @RequestParam(name = "rpp", defaultValue = "1") int rpp) {
@@ -26,7 +28,8 @@ public class FlightsRecordsController extends BaseController {
     }
 
     @Tag(name = "FlightsRecordsController")
-    @Operation(summary = "Delete all flight records")
+    @Operation(summary = "Delete flight records by id")
+    @Timed(value = "delete.flights.records.id", description = "Time to delete flights records by id")
     @RequestMapping(value = "flight/records/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteById(@PathVariable("id") Object id) {
         boolean isDeleted = flightsRecordsService.deleteById(id);
@@ -37,6 +40,7 @@ public class FlightsRecordsController extends BaseController {
 
     @Tag(name = "FlightsRecordsController")
     @Operation(summary = "Delete all flight records")
+    @Timed(value = "delete.flights.records", description = "Time to delete all flights records")
     @RequestMapping(value = "flight/records", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteAll() {
         flightsRecordsService.deleteAll();
