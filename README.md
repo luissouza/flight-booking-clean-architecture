@@ -12,40 +12,41 @@
 
 ## 📚 Table of Contents
 
-- [🔍 About the Project](#about-the-project)
-  - [🔧 Tools & Plugins](#tools--plugins)
-  - [📑 Documentation](#swagger-documentation)
-  - [📊 Case Study](#case-study)
-  - [🚀 How FlightBooking Works](#how-flightbooking-works)
-  - [⚙️ Running the Project](#running-the-project)
+- [🔍 About the Project](#-about-the-project)
+  - [🔧 Tools & Plugins](#-tools--plugins)
+  - [📑 Documentation](#-documentation)
+  - [📊 Case Study](#-case-study)
+  - [🚀 How FlightBooking Works](#-how-flightbooking-works)
+  - [⚙️ Running the Project](#-running-the-project)
   
 
-- [🏛 Architecture](#architecture)
-  - [🧱 Clean Architecture Principles](#clean-architecture-principles)
-  - [🗂 Project Structure](#project-structure)
-  - [📌 Key Terminologies](#key-terminologies)
+- [🏛 Architecture](#-architecture)
+  - [🧱 Clean Architecture Principles](#-clean-architecture-principles)
+  - [🗂 Project Structure](#-project-structure)
+  - [📌 Key Terminologies](#-key-terminologies)
   
 
-- [🧠 Patterns & Practices](#patterns--practices)
-  - [🗃 Caching](#caching)
-  - [🛡 Circuit Breaker](#circuit-breaker)
+- [🧠 Patterns & Practices](#-patterns--practices)
+  - [🗃 Caching](#-caching)
+  - [🛡 Circuit Breaker](#-circuit-breaker)
   
 
-- [📈 Observability](#observability)
-  - [🔍 Actuator](#actuator)
-  - [📡 Prometheus](#prometheus)
-  - [📊 Grafana](#grafana)
+- [📈 Observability](#-observability)
+  - [🔍 Actuator](#-actuator)
+  - [📐 Micrometer](#-micrometer)
+  - [📡 Prometheus](#-prometheus)
+  - [📊 Grafana](#-grafana)
   
 
-- [🛠 Error Handling](#error-handling)
+- [🛠 Error Handling](#-error-handling)
 
 
-- [🧪 Testing](#testing)
-  - [✅ Integrated Tests - Cucumber](#integrated-tests---cucumber)
+- [🧪 Testing](#-testing)
+  - [✅ Integrated Tests - Cucumber](#-integrated-tests---cucumber)
 
 
-- [ℹ️ Helpful Resources](#helpful-resources)
-- [🔗 Useful Links](#useful-links)
+- [ℹ️ Helpful Resources](#ℹ-helpful-resources)
+- [🔗 Useful Links](#-useful-links)
 
 ---
 
@@ -157,9 +158,18 @@ This project follows Uncle Bob's Clean Architecture:
 
 ### 🗃 Caching
 
+#### Spring Boot Caching
+
 Implements `@Cacheable` to reduce DB load and improve performance.
 
 > <img src="assets/images/caching.png" width="500"/>
+
+#### Hibernate Caching
+
+Implements `@Cacheable` to reduce DB load and improve performance.
+
+> <img src="assets/images/caching.png" width="500"/>
+
 
 ---
 
@@ -188,6 +198,18 @@ Health Check Endpoint:
   }
 }
 ```
+
+### 📐 Micrometer
+
+#### Collecting Custom Metrics
+
+With Micrometer configured, you’ll automatically get metrics for:
+
+- CPU, memory, JVM, HTTP server (latency, status codes)
+
+- Data source (connection pool)
+
+- Cache, if Spring Cache is enabled
 
 ---
 

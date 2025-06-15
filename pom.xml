@@ -147,6 +147,12 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<!-- use the Jakarta build for Spring Boot 3+ -->
+			<classifier>jakarta</classifier>
+		</dependency>
 
 	</dependencies>
 	<build>
