@@ -29,6 +29,8 @@
 - [🧠 Patterns & Practices](#-patterns--practices)
   - [🗃 Caching](#-caching)
   - [🛡 Circuit Breaker](#-circuit-breaker)
+  - [🚦 Rate Limiter](#-rate-limiter)
+  - [⏱️ Time Limiter](#-time-limiter)
   
 
 - [📈 Observability](#-observability)
@@ -178,6 +180,21 @@ Implements `@Cacheable` to reduce DB load and improve performance.
 Uses Resilience4j to prevent repeated failures when external services are down.
 
 > <img src="assets/images/circuit-breaker.png" width="500"/>
+
+---
+
+### 🚦 Rate Limiter
+
+RateLimiter throttles the rate of method invocations by granting a limited number of permissions per time window (for example, 5 calls per second).
+> <img src="assets/images/rate-limiter.png" width="500"/>
+
+---
+
+### ⏱️ Time Limiter
+
+Uses Resilience4j TimeLimiter to imposes a hard deadline on asynchronous operations.
+
+> <img src="assets/images/time-limiter.png" width="500"/>
 
 ---
 

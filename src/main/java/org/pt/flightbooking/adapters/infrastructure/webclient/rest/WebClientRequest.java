@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +43,7 @@ public class WebClientRequest extends WebClientHandler {
   @CircuitBreaker(name = "getFlights", fallbackMethod = "fallbackGetFlights")
   @Retry(name = "getFlights")
   @TimeLimiter(name = "getFlights")
+  @RateLimiter(name = "getFlights")
   public ResponseEntity<?> getFlights(final FlightSearchInput params) {
 
     final Integer v = properties.getV(service, SkyPicker.Flights.label);
@@ -73,6 +75,7 @@ public class WebClientRequest extends WebClientHandler {
   @CircuitBreaker(name = "getLocation", fallbackMethod = "fallbackGetLocation")
   @Retry(name = "getLocation")
   @TimeLimiter(name = "getLocation")
+  @RateLimiter(name = "getLocation")
   public ResponseEntity<?> getLocation(final String iata) {
     final Map<String, Object> mapParams = new HashMap<>();
     mapParams.put("id", iata);

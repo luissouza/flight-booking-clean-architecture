@@ -76,6 +76,16 @@ resilience4j:
         timeoutDuration: 4s
       getLocation:
         timeoutDuration: 4s
+  ratelimiter:
+    instances:
+      getFlights:
+        limit-for-period: 5
+        limit-refresh-period: 1s
+        timeout-duration: 500ms
+      getLocation:
+        limit-for-period: 5
+        limit-refresh-period: 1s
+        timeout-duration: 500ms
 management:
   endpoints:
     web:
