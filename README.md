@@ -114,11 +114,20 @@ The system:
 ### ⚙️ Running the Project
 
 ```bash
-# Step 1: Build the project
-mvn clean install -DskipTests=true
 
-# Step 2: Run the project with Docker
-docker compose up --build
+
+# Run in IntelliJ
+
+1 - Import the project
+2 - mvn clean install
+3 - Run
+
+# Run the project with Docker
+
+docker-compose --profile with-app-container up
+
+# The project will take a while to run because all containers (ElasticSearch, Postgres, Prometheus, Grafana) have to be healthy to run.
+
 ```
 
 **Main endpoint example:**
