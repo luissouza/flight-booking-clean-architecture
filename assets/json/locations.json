@@ -1,0 +1,198 @@
+{
+  "locations": [
+    {
+      "id": "OPO",
+      "int_id": 2366,
+      "airport_int_id": 2366,
+      "active": true,
+      "code": "OPO",
+      "icao": "LPPR",
+      "name": "Porto",
+      "slug": "porto-porto-portugal",
+      "slug_en": "porto-porto-portugal",
+      "alternative_names": [
+        "Aeroporto Francisco Sá Carneiro"
+      ],
+      "rank": 129,
+      "global_rank_dst": 16,
+      "dst_popularity_score": 3336885.0,
+      "timezone": "Europe/Lisbon",
+      "city": {
+        "id": "porto_pt",
+        "name": "Porto",
+        "code": "OPO",
+        "slug": "porto-portugal",
+        "autonomous_territory": null,
+        "nearby_country": null,
+        "country": {
+          "id": "PT",
+          "name": "Portugal",
+          "slug": "portugal",
+          "code": "PT"
+        },
+        "subdivision": null,
+        "continent": {
+          "id": "europe",
+          "name": "Europe",
+          "slug": "europe",
+          "code": "EU"
+        },
+        "region": {
+          "id": "southern-europe",
+          "name": "Southern Europe",
+          "slug": "southern-europe"
+        }
+      },
+      "location": {
+        "lat": 41.235556,
+        "lon": -8.678056
+      },
+      "alternative_departure_points": [
+        {
+          "id": "VGO",
+          "distance": 142.18,
+          "duration": 6066.2
+        },
+        {
+          "id": "SCQ",
+          "distance": 240.42,
+          "duration": 10054.4
+        }
+      ],
+      "tags": [
+        {
+          "tag": "adventure",
+          "month_to": -1,
+          "month_from": -1
+        },
+        {
+          "tag": "beach",
+          "month_to": -1,
+          "month_from": -1
+        }
+      ],
+      "providers": [
+        1030,
+        1096,
+        1163,
+        1175,
+        1225,
+        1270,
+        1282,
+        1283,
+        1329
+      ],
+      "special": [
+        {
+          "id": "bairro-of-ribeira-portugal_poi",
+          "name": "Bairro of Ribeira, Portugal",
+          "slug": "bairro-of-ribeira"
+        },
+        {
+          "id": "santiago-de-compostela_poi",
+          "name": "Santiago De Compostela",
+          "slug": "santiago-de-compostela"
+        }
+      ],
+      "tourist_region": [
+        {
+          "id": "aldeias-do-xisto_poi",
+          "name": "Aldeias do Xisto",
+          "slug": "aldeias-do-xisto"
+        },
+        {
+          "id": "aveiro-district_poi",
+          "name": "Aveiro District",
+          "slug": "aveiro-district"
+        },
+        {
+          "id": "braga-district_poi",
+          "name": "Braga District",
+          "slug": "braga-district"
+        },
+        {
+          "id": "coimbra-district_poi",
+          "name": "Coimbra District",
+          "slug": "coimbra-district"
+        },
+        {
+          "id": "douro-litoral_poi",
+          "name": "Douro Litoral",
+          "slug": "douro-litoral"
+        },
+        {
+          "id": "minho_poi",
+          "name": "Minho",
+          "slug": "minho"
+        },
+        {
+          "id": "norte-region_poi",
+          "name": "Norte Region",
+          "slug": "norte-region"
+        },
+        {
+          "id": "north-coast-natural-park_poi",
+          "name": "North Coast Natural Park",
+          "slug": "north-coast-natural-park"
+        },
+        {
+          "id": "peneda-geres-national-park_poi",
+          "name": "Peneda-Gerês National Park",
+          "slug": "peneda-geres-national-park"
+        },
+        {
+          "id": "porto-district_poi",
+          "name": "Porto District",
+          "slug": "porto-district"
+        },
+        {
+          "id": "porto-region_poi",
+          "name": "Porto Region",
+          "slug": "porto-region"
+        },
+        {
+          "id": "prata-coast_poi",
+          "name": "Prata Coast",
+          "slug": "prata-coast"
+        },
+        {
+          "id": "viana-do-castelo-district_poi",
+          "name": "Viana do Castelo District",
+          "slug": "viana-do-castelo-district"
+        },
+        {
+          "id": "vila-real-district_poi",
+          "name": "Vila Real district",
+          "slug": "vila-real-district"
+        },
+        {
+          "id": "viseu-district_poi",
+          "name": "Viseu district",
+          "slug": "viseu-district"
+        }
+      ],
+      "car_rentals": [
+        {
+          "provider_id": 1175,
+          "providers_locations": [
+            "436113"
+          ]
+        }
+      ],
+      "new_ground": false,
+      "partners": [
+        "*"
+      ],
+      "routing_priority": 0,
+      "type": "airport"
+    }
+  ],
+  "meta": {
+    "locale": {
+      "code": "en-US",
+      "status": "Locale not specified, using default."
+    }
+  },
+  "last_refresh": 1750496653,
+  "results_retrieved": 1
+}

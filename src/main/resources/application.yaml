@@ -33,16 +33,16 @@ spring:
 api:
   services:
     skyPicker:
-      baseUrl: https://run.mocky.io
+      baseUrl: https://github.com
       headers: apikey=API_KEY_HERE
       endpoints:
         filter:
-          path: /v3/75ff38da-58e1-4f00-8135-008c31e4415b
+          path: /luissouza/flight-booking-clean-architecture/blob/main/assets/json/flights.json
           method: GET
           timeout: 20
           v: 3
         locations:
-          path: /v3/efb63a70-f1c8-4c01-996b-de8c179f3b5c
+          path: /luissouza/flight-booking-clean-architecture/blob/main/assets/json/locations.json
           method: GET
           timeout: 20
 springdoc:
