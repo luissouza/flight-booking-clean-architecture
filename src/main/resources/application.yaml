@@ -1,4 +1,9 @@
 spring:
+  docker:
+    compose:
+      enabled: true
+      readiness:
+        timeout: 5m
   cache:
     jcache:
       config: classpath:ehcache.xml
@@ -15,7 +20,7 @@ spring:
     properties:
       hibernate:
         boot:
-          allow_jdbc_metadata_access=false:
+          allow_jdbc_metadata_access=true:
     repositories:
       enabled=true:
     hibernate:

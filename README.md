@@ -60,22 +60,24 @@ This is a Spring Boot application simulating a real-world flight booking system.
 
 ### 🔧 Tools & Plugins
 
-* Java JDK 23.0.1
-* Spring Boot 3.3.5
-* Maven 3.87
-* Cucumber 7.13.0
-* Junit 5
-* Lombok 1.18.34
-* Postgres 13
-* Elastic Search 8.15.3
-* Docker
-* OpenApi 2.1.0
-* Resilience4j 1.7.1
-* Actuator 3.3.5
-* Prometheus 2.44.0
-* Graphana 9.5.2
-* Slfj 1.7.36
-* Developed with: IntelliJ IDEA 2025.1.2 (Community Edition)
+| 🛠️ Technology      | 📦 Version             |
+|---------------------|------------------------|
+| ☕ Java JDK          | 23.0.1                 |
+| 🌱 Spring Boot      | 3.3.5                  |
+| 📦 Maven            | 3.8.7                  |
+| 🥒 Cucumber         | 7.13.0                 |
+| 🧪 JUnit            | 5                      |
+| ✨ Lombok            | 1.18.34               |
+| 🐘 PostgreSQL       | 13                     |
+| 🔍 Elasticsearch    | 8.15.3                 |
+| 🐳 Docker           | 27.4.0                 |
+| 📖 OpenAPI          | 2.1.0                  |
+| 🛡️ Resilience4j    | 1.7.1                  | 
+| 📈 Prometheus       | 2.44.0                 |
+| 📊 Grafana          | 9.5.2                  |
+| 📢 SLF4J            | 1.7.36                 |
+| ⚡ Caffeine Cache    | 3.2.1                  |
+| 💻 Developed with   | IntelliJ IDEA 2025.1.2 |
 ---
 
 ### 📑 Documentation

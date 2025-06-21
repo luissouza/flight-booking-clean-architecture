@@ -1,10 +1,17 @@
 services:
   postgres:
     image: postgres:13-alpine
+    container_name: postgres
+    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: dockerdb
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
       - "5432:5432"
     volumes:
@@ -22,6 +29,11 @@ services:
       - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
       - http.cors.allow-credentials=true
       - xpack.security.enabled=false
+    healthcheck:
+      test: curl -f http://localhost:9200/_cluster/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 10
     user: elasticsearch
     ports:
       - "9200:9200"
@@ -33,6 +45,11 @@ services:
       - "9090:9090"
     volumes:
       - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    healthcheck:
+      test: wget --spider -q http://localhost:9090/-/ready || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
   grafana:
     image: grafana/grafana:9.5.2
     container_name: grafana
@@ -41,17 +58,28 @@ services:
     restart: unless-stopped
     volumes:
       - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+    healthcheck:
+      test: curl -f http://localhost:3000/login || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
   app:
     container_name: flightbooking
     image: flightbooking
+    profiles:
+      - with-app-container
     build: .
     ports:
       - "8085:8085"
     depends_on:
-      - elasticsearch
-      - postgres
-      - prometheus
-      - grafana
+      postgres:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      prometheus:
+        condition: service_healthy
+      grafana:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/dockerdb
       SPRING_DATASOURCE_USERNAME: postgres
