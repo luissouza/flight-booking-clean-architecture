@@ -1,67 +1,67 @@
 {
   "locations": [
     {
-      "id": "OPO",
-      "int_id": 2366,
-      "airport_int_id": 2366,
+      "id": "LIS",
+      "int_id": 856,
+      "airport_int_id": 856,
       "active": true,
-      "code": "OPO",
-      "icao": "LPPR",
-      "name": "Porto",
-      "slug": "porto-porto-portugal",
-      "slug_en": "porto-porto-portugal",
+      "code": "LIS",
+      "icao": "LPPT",
+      "name": "Lisbon Portela",
+      "slug": "lisbon-portela-lisbon-portugal",
+      "slug_en": "lisbon-portela-lisbon-portugal",
       "alternative_names": [
-        "Aeroporto Francisco Sá Carneiro"
+        "Aeroporto de Lisboa"
       ],
-      "rank": 129,
-      "global_rank_dst": 16,
-      "dst_popularity_score": 3336885.0,
+      "rank": 24,
+      "global_rank_dst": 2,
+      "dst_popularity_score": 6796558.0,
       "timezone": "Europe/Lisbon",
       "city": {
-        "id": "porto_pt",
-        "name": "Porto",
-        "code": "OPO",
-        "slug": "porto-portugal",
+        "id": "lisbon_pt",
+        "name": "Lisbon",
+        "code": "LIS",
+        "slug": "lisbon-portugal",
         "autonomous_territory": null,
         "nearby_country": null,
-        "country": {
-          "id": "PT",
-          "name": "Portugal",
-          "slug": "portugal",
-          "code": "PT"
+        "region": {
+          "id": "southern-europe",
+          "name": "Southern Europe",
+          "slug": "southern-europe"
         },
-        "subdivision": null,
         "continent": {
           "id": "europe",
           "name": "Europe",
           "slug": "europe",
           "code": "EU"
         },
-        "region": {
-          "id": "southern-europe",
-          "name": "Southern Europe",
-          "slug": "southern-europe"
-        }
+        "country": {
+          "id": "PT",
+          "name": "Portugal",
+          "slug": "portugal",
+          "code": "PT"
+        },
+        "subdivision": null
       },
       "location": {
-        "lat": 41.235556,
-        "lon": -8.678056
+        "lat": 38.774167,
+        "lon": -9.134167
       },
       "alternative_departure_points": [
         {
-          "id": "VGO",
-          "distance": 142.18,
-          "duration": 6066.2
-        },
-        {
-          "id": "SCQ",
-          "distance": 240.42,
-          "duration": 10054.4
+          "id": "BJZ",
+          "distance": 241.61,
+          "duration": 9667
         }
       ],
       "tags": [
         {
-          "tag": "adventure",
+          "tag": "sightseeing",
+          "month_to": -1,
+          "month_from": -1
+        },
+        {
+          "tag": "activities",
           "month_to": -1,
           "month_from": -1
         },
@@ -69,29 +69,49 @@
           "tag": "beach",
           "month_to": -1,
           "month_from": -1
+        },
+        {
+          "tag": "surfing",
+          "month_to": -1,
+          "month_from": -1
+        },
+        {
+          "tag": "family fun",
+          "month_to": -1,
+          "month_from": -1
         }
       ],
       "providers": [
         1030,
+        1035,
         1096,
         1163,
         1175,
-        1225,
-        1270,
+        1229,
         1282,
         1283,
         1329
       ],
       "special": [
         {
+          "id": "mosteiro-dos-jeronimos_poi",
+          "name": "Mosteiro Dos Jerónimos",
+          "slug": "mosteiro-dos-jeronimos"
+        },
+        {
           "id": "bairro-of-ribeira-portugal_poi",
           "name": "Bairro of Ribeira, Portugal",
           "slug": "bairro-of-ribeira"
         },
         {
-          "id": "santiago-de-compostela_poi",
-          "name": "Santiago De Compostela",
-          "slug": "santiago-de-compostela"
+          "id": "bairro-alfama-lisbon_poi",
+          "name": "Bairro Alfama, Lisbon",
+          "slug": "bairro-alfama"
+        },
+        {
+          "id": "sintra_poi",
+          "name": "Sintra",
+          "slug": "sintra"
         }
       ],
       "tourist_region": [
@@ -101,81 +121,133 @@
           "slug": "aldeias-do-xisto"
         },
         {
-          "id": "aveiro-district_poi",
-          "name": "Aveiro District",
-          "slug": "aveiro-district"
+          "id": "alentejo-central_poi",
+          "name": "Alentejo Central",
+          "slug": "alentejo-central"
         },
         {
-          "id": "braga-district_poi",
-          "name": "Braga District",
-          "slug": "braga-district"
+          "id": "alentejo-litoral_poi",
+          "name": "Alentejo Litoral",
+          "slug": "alentejo-litoral"
         },
         {
-          "id": "coimbra-district_poi",
-          "name": "Coimbra District",
-          "slug": "coimbra-district"
+          "id": "alto-alentejo_poi",
+          "name": "Alto Alentejo",
+          "slug": "alto-alentejo"
         },
         {
-          "id": "douro-litoral_poi",
-          "name": "Douro Litoral",
-          "slug": "douro-litoral"
+          "id": "beira-interior-norte_poi",
+          "name": "Beira Interior Norte",
+          "slug": "beira-interior-norte"
         },
         {
-          "id": "minho_poi",
-          "name": "Minho",
-          "slug": "minho"
+          "id": "beira-interior-sul_poi",
+          "name": "Beira Interior Sul",
+          "slug": "beira-interior-sul"
         },
         {
-          "id": "norte-region_poi",
-          "name": "Norte Region",
-          "slug": "norte-region"
+          "id": "bom-sucesso_poi",
+          "name": "Bom Sucesso",
+          "slug": "bom-sucesso"
         },
         {
-          "id": "north-coast-natural-park_poi",
-          "name": "North Coast Natural Park",
-          "slug": "north-coast-natural-park"
+          "id": "castelo-branco-district_poi",
+          "name": "Castelo Branco District",
+          "slug": "castelo-branco-district"
         },
         {
-          "id": "peneda-geres-national-park_poi",
-          "name": "Peneda-Gerês National Park",
-          "slug": "peneda-geres-national-park"
+          "id": "costa-alentejana_poi",
+          "name": "Costa Alentejana",
+          "slug": "costa-alentejana"
         },
         {
-          "id": "porto-district_poi",
-          "name": "Porto District",
-          "slug": "porto-district"
+          "id": "estremadura_poi",
+          "name": "Estremadura",
+          "slug": "estremadura"
         },
         {
-          "id": "porto-region_poi",
-          "name": "Porto Region",
-          "slug": "porto-region"
+          "id": "evora-district_poi",
+          "name": "Evora District",
+          "slug": "evora-district"
         },
         {
-          "id": "prata-coast_poi",
-          "name": "Prata Coast",
-          "slug": "prata-coast"
+          "id": "guarda-district_poi",
+          "name": "Guarda district",
+          "slug": "guarda-district"
         },
         {
-          "id": "viana-do-castelo-district_poi",
-          "name": "Viana do Castelo District",
-          "slug": "viana-do-castelo-district"
+          "id": "leiria-district_poi",
+          "name": "Leiria District",
+          "slug": "leiria-district"
         },
         {
-          "id": "vila-real-district_poi",
-          "name": "Vila Real district",
-          "slug": "vila-real-district"
+          "id": "lisboa-district_poi",
+          "name": "Lisboa District",
+          "slug": "lisboa-district"
         },
         {
-          "id": "viseu-district_poi",
-          "name": "Viseu district",
-          "slug": "viseu-district"
+          "id": "lisbon-region_poi",
+          "name": "Lisbon Region",
+          "slug": "lisbon-region"
+        },
+        {
+          "id": "oeste_poi",
+          "name": "Oeste",
+          "slug": "oeste"
+        },
+        {
+          "id": "portalegre-district_poi",
+          "name": "Portalegre District",
+          "slug": "portalegre-district"
+        },
+        {
+          "id": "ribatejo_poi",
+          "name": "Ribatejo",
+          "slug": "ribatejo"
+        },
+        {
+          "id": "santarem-district_poi",
+          "name": "Santarém District",
+          "slug": "santarem-district"
+        },
+        {
+          "id": "serra-da-estrela_poi",
+          "name": "Serra da Estrela",
+          "slug": "serra-da-estrela"
+        },
+        {
+          "id": "serra-de-sao-mamede_poi",
+          "name": "Serra de São Mamede",
+          "slug": "serra-de-sao-mamede"
+        },
+        {
+          "id": "setubal-district_poi",
+          "name": "Setúbal District",
+          "slug": "setubal-district"
+        },
+        {
+          "id": "sintra-region_poi",
+          "name": "Sintra Region",
+          "slug": "sintra-region"
+        },
+        {
+          "id": "vicentina-coast_poi",
+          "name": "Vicentina Coast",
+          "slug": "vicentina-coast"
+        },
+        {
+          "id": "vicentine-route_poi",
+          "name": "Vicentine Route",
+          "slug": "vicentine-route"
         }
       ],
       "car_rentals": [
         {
           "provider_id": 1175,
           "providers_locations": [
-            "436113"
+            "1931866",
+            "273364",
+            "4433257"
           ]
         }
       ],
@@ -186,13 +258,5 @@
       "routing_priority": 0,
       "type": "airport"
     }
-  ],
-  "meta": {
-    "locale": {
-      "code": "en-US",
-      "status": "Locale not specified, using default."
-    }
-  },
-  "last_refresh": 1750496653,
-  "results_retrieved": 1
+  ]
 }
