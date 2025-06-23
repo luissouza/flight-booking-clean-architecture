@@ -1,3 +1,5 @@
+# Flight Booking API
+
 <h1 align="center">
   <br>
   <img width="1000" src="assets/images/airplane.png" alt="Flight Booking Project Banner"/>
@@ -78,6 +80,9 @@ This is a Spring Boot application simulating a real-world flight booking system.
 | 📢 SLF4J            | 1.7.36                 |
 | ⚡ Caffeine Cache    | 3.2.1                  |
 | 💻 Developed with   | IntelliJ IDEA 2025.1.2 |
+
+> For complete dependency information, see [`pom.xml`](pom.xml)
+
 ---
 
 ### 📑 Documentation
@@ -100,38 +105,44 @@ Access the series of four articles published on Medium and see details about the
 
 ### 🚀 How FlightBooking Works
 
-The system:
-- Analyzes flights by destination, date, airline, and currency
-- Calculates average flight prices and baggage costs
-- Stores results in a historical database
+This flight booking system provides comprehensive flight analysis capabilities:
+
+- **Flight Analysis**: Searches and analyzes flights by destination, date, airline, and currency
+- **Price Calculation**: Computes average flight prices and baggage costs for better decision-making
+- **Historical Data**: Stores analysis results in a database for future reference and trends
 
 **External APIs used:**
-- Flights: https://run.mocky.io/v3/75ff38da-58e1-4f00-8135-008c31e4415b  
-- Airport Locations: https://run.mocky.io/v3/efb63a70-f1c8-4c01-996b-de8c179f3b5c  
+- **Flights Data**: https://run.mocky.io/v3/75ff38da-58e1-4f00-8135-008c31e4415b  
+- **Airport Locations**: https://run.mocky.io/v3/efb63a70-f1c8-4c01-996b-de8c179f3b5c  
 
 ---
 
 ### ⚙️ Running the Project
 
+#### Option 1: Run in IntelliJ IDEA
+
 ```bash
+# 1. Import the project into IntelliJ IDEA
+# 2. Install dependencies
+mvn clean install
 
+# 3. Run the application from your IDE
+```
 
-# Run in IntelliJ
+#### Option 2: Run with Docker
 
-1 - Import the project
-2 - mvn clean install
-3 - Run
-
-# Run the project with Docker
-
+```bash
+# Start all services including the application
 docker-compose --profile with-app-container up
 
-# The project will take a while to run because all containers (ElasticSearch, Postgres, Prometheus, Grafana) have to be healthy to run.
-
+# Note: The project will take a few minutes to start as all containers 
+# (ElasticSearch, Postgres, Prometheus, Grafana) need to be healthy before running.
 ```
+
+> See the complete Docker configuration in [`docker-compose.yml`](docker-compose.yml)
 
 **Main endpoint example:**
-```
+```http
 GET /api/v1/flights/avg?flyTo=LIS,OPO&currency=GBP&dateFrom=2024-12-01&dateTo=2024-12-02&airLines=TP,FR&page=1&rpp=11
 ```
 
@@ -196,14 +207,14 @@ Uses Resilience4j to prevent repeated failures when external services are down.
 
 ### 🚦 Rate Limiter
 
-RateLimiter throttles the rate of method invocations by granting a limited number of permissions per time window (for example, 5 calls per second).
+The Rate Limiter pattern controls the rate of method invocations by granting a limited number of permissions per time window (for example, 5 calls per second), helping to prevent system overload.
 > <img src="assets/images/rate-limiter.png" width="500"/>
 
 ---
 
 ### ⏱️ Time Limiter
 
-Uses Resilience4j TimeLimiter to imposes a hard deadline on asynchronous operations.
+Uses Resilience4j TimeLimiter to impose a hard deadline on asynchronous operations.
 
 > <img src="assets/images/time-limiter.png" width="500"/>
 
@@ -252,7 +263,7 @@ With Micrometer configured, you’ll automatically get metrics for:
 
 - Access Grafana at: [http://localhost:3000](http://localhost:3000)  
 - Default user/password: `admin/admin`  
-> <img src="assets/images/graphana.png" width="600"/>
+> <img src="assets/images/grafana.png" width="600"/>
 
 ---
 
@@ -275,10 +286,13 @@ Standardized error format ensures consistency across APIs:
 
 ## 🧪 Testing
 
-- Integration testing with **Cucumber + JUnit 5**
-- PostgreSQL container required before running tests
+This project includes comprehensive integration testing using modern testing frameworks:
 
-### ✅ Integrated Tests - Cucumber
+- **Integration Testing**: Built with **Cucumber + JUnit 5** for behavior-driven development
+- **Prerequisites**: PostgreSQL container must be running before executing tests
+- **Test Coverage**: Validates API endpoints, business logic, and data persistence
+
+### ✅ Integration Tests - Cucumber
 
 > <img src="assets/images/cucumber-report.png" width="600"/>
 
