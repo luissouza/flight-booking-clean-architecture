@@ -294,6 +294,39 @@ This project includes comprehensive integration testing using modern testing fra
 
 ### ✅ Integration Tests - Cucumber
 
+The project uses Cucumber for behavior-driven development (BDD) testing, allowing for human-readable test scenarios that serve as both documentation and automated tests.
+
+#### Test Structure
+
+- **Feature Files**: Located in `src/test/resources/features/`, these files contain human-readable test scenarios written in Gherkin syntax
+- **Step Definitions**: Located in `src/test/java/org/pt/flightbooking/scenarios/`, these Java classes implement the steps defined in feature files
+- **Test Runner**: `FlightsAutomatedTests.java` configures and runs all Cucumber tests
+
+#### Key Features
+
+- **Spring Integration**: Tests run within a Spring context using `@CucumberContextConfiguration`
+- **Scenario Isolation**: Each test scenario runs in isolation with proper setup and teardown
+- **Mock Components**: External dependencies like ElasticSearch are mocked for reliable testing
+- **HTML Reports**: Cucumber generates detailed HTML reports showing test results
+
+#### Test Scenarios
+
+The project includes several test scenarios covering:
+
+1. **Flight Search**: Testing the core flight search functionality
+2. **Flight Records Management**: Testing CRUD operations for flight records
+3. **Error Handling**: Testing graceful handling of invalid inputs and edge cases
+
+#### Running the Tests
+
+```bash
+# Run all Cucumber tests
+mvn test -Dtest=FlightsAutomatedTests
+
+# Run specific feature
+mvn test -Dcucumber.filter.tags="@FlightRecordsScenarioSteps"
+```
+
 > <img src="assets/images/cucumber-report.png" width="600"/>
 
 ---
