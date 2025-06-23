@@ -15,7 +15,7 @@
 	<name>Flight Booking</name>
 	<description>Spring Boot application to show the last features and good practices</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>17</java.version>
 		<cucumber.version>7.20.1</cucumber.version>
 		<openapi.version>2.6.0</openapi.version>
 		<gson.version>2.11.0</gson.version>
@@ -164,8 +164,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>20</source>
-					<target>20</target>
+					<source>17</source>
+					<target>17</target>
 				</configuration>
 			</plugin>
 		</plugins>

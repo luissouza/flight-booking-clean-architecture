@@ -3,6 +3,7 @@ package org.pt.flightbooking.application.utils;
 import org.junit.jupiter.api.Test;
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DateTimeFormatterConfigTest {
@@ -14,7 +15,7 @@ class DateTimeFormatterConfigTest {
 
     @Test
     void convertIsoFormat_invalidIsoDate_throwsParseException() {
-        assertThrows(ParseException.class,
+        assertThrows(DateTimeParseException.class,
             () -> DateTimeFormatterConfig.convertIsoFormat("not-a-date"));
     }
 
