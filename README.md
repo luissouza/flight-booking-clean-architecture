@@ -46,7 +46,8 @@
 
 
 - [🧪 Testing](#-testing)
-  - [✅ Integrated Tests - Cucumber](#-integrated-tests---cucumber)
+  - [🔬 Unit Tests - JUnit 5 + Mockito](#-unit-tests---junit-5--mockito)
+  - [✅ Integration Tests - Cucumber](#-integration-tests---cucumber)
 
 
 - [ℹ️ Helpful Resources](#ℹ-helpful-resources)
@@ -69,6 +70,7 @@ This is a Spring Boot application simulating a real-world flight booking system.
 | 📦 Maven            | 3.8.7                  |
 | 🥒 Cucumber         | 7.13.0                 |
 | 🧪 JUnit            | 5                      |
+| 🎭 Mockito          | (via Spring Boot Test) |
 | ✨ Lombok            | 1.18.34               |
 | 🐘 PostgreSQL       | 13                     |
 | 🔍 Elasticsearch    | 8.15.3                 |
@@ -286,11 +288,98 @@ Standardized error format ensures consistency across APIs:
 
 ## 🧪 Testing
 
-This project includes comprehensive integration testing using modern testing frameworks:
+This project follows a comprehensive testing strategy with multiple levels of testing to ensure code quality and reliability:
 
+- **Unit Testing**: Built with **JUnit 5 + Mockito** for isolated component testing
 - **Integration Testing**: Built with **Cucumber + JUnit 5** for behavior-driven development
-- **Prerequisites**: PostgreSQL container must be running before executing tests
-- **Test Coverage**: Validates API endpoints, business logic, and data persistence
+- **Test Pyramid**: Emphasizes fast unit tests with fewer, focused integration tests
+- **Prerequisites**: PostgreSQL container must be running before executing integration tests
+- **Test Coverage**: Validates individual components, business logic, API endpoints, and data persistence
+
+### 🔬 Unit Tests - JUnit 5 + Mockito
+
+The project includes extensive unit testing to ensure individual components work correctly in isolation. Unit tests focus on testing business logic, mappers, utilities, and use cases without external dependencies.
+
+#### Test Categories
+
+- **Use Case Tests**: Test business logic and application services (`FlightsUseCaseImplTest`, `FlightsLogsUseCaseImplTest`)
+- **Mapper Tests**: Validate data transformation between DTOs and domain models (`FlightMapperTest`, `LocationMapperTest`, etc.)
+- **Utility Tests**: Test helper classes and utility functions (`StringUtilsTest`, `NumberUtilsConfigTest`, etc.)
+- **Exception Tests**: Verify proper error handling and custom exceptions (`ExceptionTests`)
+
+#### Key Features
+
+- **Mockito Integration**: Uses `@Mock` and `@ExtendWith(MockitoExtension.class)` for dependency mocking
+- **Isolated Testing**: Each test runs independently without external dependencies
+- **Fast Execution**: Unit tests run quickly as they don't require Spring context or database connections
+- **Clean Architecture Validation**: Tests verify that business logic is properly isolated from infrastructure concerns
+
+#### Test Structure
+
+```java
+@ExtendWith(MockitoExtension.class)
+class FlightsUseCaseImplTest {
+    
+    @Mock
+    private FlightsGateway flightsGateway;
+    
+    @Mock
+    private LoggerGateway loggerGateway;
+    
+    private FlightsUseCaseImpl flightsUseCase;
+    
+    @BeforeEach
+    void setUp() {
+        flightsUseCase = new FlightsUseCaseImpl(flightsGateway, loggerGateway);
+    }
+    
+    @Test
+    void shouldCalculateAverageFlightPrices() {
+        // Test implementation
+    }
+}
+```
+
+#### Running Unit Tests
+
+```bash
+# Run all unit tests
+mvn test
+
+# Run specific test class
+mvn test -Dtest=FlightMapperTest
+
+# Run tests with specific pattern
+mvn test -Dtest="*MapperTest"
+
+# Run tests with coverage report
+mvn test jacoco:report
+
+# Run only unit tests (exclude integration tests)
+mvn test -Dtest="!*AutomatedTests"
+```
+
+#### Test Organization
+
+The unit tests are organized following the same package structure as the main source code:
+
+```
+src/test/java/org/pt/flightbooking/
+├── application/
+│   ├── mappers/           # Mapper unit tests
+│   ├── usecases/impl/     # Use case unit tests
+│   ├── utils/             # Utility unit tests
+│   └── exception/         # Exception handling tests
+└── ...
+```
+
+#### Testing Best Practices
+
+- **AAA Pattern**: Tests follow Arrange-Act-Assert pattern for clarity
+- **Descriptive Names**: Test method names clearly describe what is being tested
+- **Single Responsibility**: Each test focuses on one specific behavior
+- **Mock External Dependencies**: All external dependencies are mocked to ensure isolation
+- **Fast Feedback**: Unit tests provide quick feedback during development
 
 ### ✅ Integration Tests - Cucumber
 
